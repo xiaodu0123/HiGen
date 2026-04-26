@@ -1,0 +1,2 @@
+# Enhancing Long Document Long Form Summarisation with Self-Planning
+This repository contains the code implementation of Highlight-guided Generation approach (HiGen), proposed in the AACL'25 paper: [Enhancing Long Document Long Form Summarisation with Self-Planning](https://arxiv.org/pdf/2512.17179). HiGen is a self-planning summarisation framework for long document summarisation that leverages sentence-level highlights derived from the input document to guide the summary generation.  
