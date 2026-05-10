@@ -1,0 +1,13 @@
+# Secrets
+.env
+evaluate/fact_score/api.key
+
+# Results and caches
+results/
+scripts/
+fact_score/sent2facts_cache.json
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
