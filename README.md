@@ -9,10 +9,20 @@ This repository contains the code implementation of Highlight-guided Generation 
    python -m spacy download en_core_web_sm
    python -m nltk.downloader punkt punkt_tab names
    ```
-Note: `summac` library requires an older version of `transformers`, which can be incompatible with `vLLM`. 
+Note: `summac` library requires an older version of `transformers`, which can be incompatible with `vLLM`. A simple workaround is to create separate virtual environments for inference and evaluation.
 
-3. Set up OpenAI API key and Hugging Face token in `.env` file in the project root path
+3. Set up OpenAI API key and Hugging Face token in `.env` file in the project root path.
 
+    Template of `.env` file
+    ```
+    OPENAI_API_KEY="add your API key"
+    HF_TOKEN="add your token"
+    ```
+    Instead, you can set up environment variables
+    ```
+    export OPENAI_API_KEY="your API key"
+    export HF_TOKEN="your huggingface token"
+    ```
 
 ## Project Structure
 The code base is organised in the following structure:
@@ -24,7 +34,7 @@ The code base is organised in the following structure:
 - `eval.py`: compute evaluation metrics for the generated summaries (including ROUGE-L, BertScore, Summa-C and FactScore)
 
 ## Experiments
-We evaluate the performance of HiGen on GovReport and QMSum datasets. We use the version of the datasets in [SCROLLS benchmark](https://www.scrolls-benchmark.com/), available on [Hugging Face](https://huggingface.co/datasets/tau/scrolls). 
+We evaluate the performance of HiGen on GovReport and QMSum datasets. We use the version of the datasets provided in [SCROLLS benchmark](https://www.scrolls-benchmark.com/), available on [Hugging Face](https://huggingface.co/datasets/tau/scrolls). 
 
 ### Generate summaries using HiGen
 Extract sentence-level highlights from the input documents:
@@ -80,7 +90,7 @@ python extract_highlights.py \
 ### Compute evaluation metrics
 ```bash
 python eval.py \
-    --data_path ${PATH to prediction file}
+    --data_path ${PATH to prediction file} \
     --dataset gov_report \
     --metrics rouge bert summac factscore \
     --model_name gpt-4o-mini \
